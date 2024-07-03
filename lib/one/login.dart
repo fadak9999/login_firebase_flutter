@@ -68,7 +68,7 @@ class _loginState extends State<login> {
   //
   // ignore: non_constant_identifier_names
   void go_to_signUP() {
-    Get.to(const sinUp_screens());
+    Get.off(const sinUp_screens());
   }
 
   //////______________________________________________________________________

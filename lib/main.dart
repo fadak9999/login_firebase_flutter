@@ -2,11 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:login_firebase_flutter2/one/auth.dart';
-import 'package:login_firebase_flutter2/one/login.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); //
+  //+
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  //+
   runApp(const MyApp());
 }
 
