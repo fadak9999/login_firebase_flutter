@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:login_firebase_flutter2/one/home.dart';
+//import 'package:login_firebase_flutter2/one/home.dart';
 import 'package:login_firebase_flutter2/one/login.dart';
 
 // ignore: camel_case_types
@@ -25,44 +25,36 @@ class _sinUp_screensState extends State<sinUp_screens> {
       if (passwordConfirn()) {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: _email.text.trim(), password: _password.text.trim());
-        Get.to(home());
+        Navigator.of(context).pushNamed("/");
       } else {
         return showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return const SizedBox(
+                height: 300,
+                width: double.infinity,
+                child: Center(
+                  child: Text(
+                    "يوجد اختلاف الرمز السري",
+                  ),
+                ),
+              );
+            });
+      }
+    } else {
+      return showModalBottomSheet(
           context: context,
           builder: (context) {
             return const SizedBox(
               height: 300,
               width: double.infinity,
-              child: Expanded(
-                child: Center(
-                    child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    " يوجد اختلاف في الرمز السري",
-                    style: TextStyle(fontSize: 18, color: Colors.black),
-                  ),
-                )),
+              child: Center(
+                child: Text(
+                  "لم تقم باضافه ألبريد ألالكتروني او كلمة المرور حاول مجددا ",
+                ),
               ),
             );
-          },
-        );
-      }
-    } else {
-      return showBottomSheet(
-        context: context,
-        builder: (context) {
-          return const SizedBox(
-            height: 300,
-            width: double.infinity,
-            child: Center(
-              child: Text(
-                "لم تقم باضافة كلمة المرور حاول مجددا",
-                style: TextStyle(fontSize: 15),
-              ),
-            ),
-          );
-        },
-      );
+          });
     }
   }
 
@@ -213,7 +205,7 @@ class _sinUp_screensState extends State<sinUp_screens> {
             child: ElevatedButton(
                 onPressed: () {
                   sinIn();
-                  Get.off(home());
+                  //Get.off(home());
                 },
                 child: Text("Sing Up")),
           ),

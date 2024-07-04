@@ -27,7 +27,9 @@ class _homeState extends State<home> {
                 onPressed: () {
 //
 
-                  FirebaseAuth.instance.signOut();
+                  setState(() {
+                    FirebaseAuth.instance.signOut();
+                  });
 
 //
                 },

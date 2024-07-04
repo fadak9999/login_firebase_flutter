@@ -23,7 +23,7 @@ class _loginState extends State<login> {
     if (check_enter_user()) {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _email.text.trim(), password: _password.text.trim());
-      Get.to(const home());
+      Get.off(const home());
     } else {
       return showModalBottomSheet(
         context: context,
@@ -135,6 +135,7 @@ class _loginState extends State<login> {
           ),
           Padding(
             padding: const EdgeInsets.all(50),
+            //login
             child: ElevatedButton(
                 onPressed: () {
                   login();
